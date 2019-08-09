@@ -4,7 +4,8 @@ import './App.css';
 import axios from 'axios';
 
 import RegristrationForm from './components/RegristrationForm';
-import Display from './components/Display'
+import Display from './components/Display';
+
 
 
 class App extends React.Component {
@@ -49,16 +50,17 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <RegristrationForm />
         </header>
-
+        
         <div> 
           {this.state.items.map(e => <Display 
             course = {e.course}
             ingredients = {e.ingredients}
             name = {e.name}
-            technique = {e.ingredients}
+            technique = {e.technique}
             />
           )}
         </div>
+
       </div>
 
     );

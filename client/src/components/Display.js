@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import styled from 'styled-components';
 
 const Display = ({ name, ingredients, technique, course }) => {
 
@@ -7,28 +7,38 @@ const Display = ({ name, ingredients, technique, course }) => {
 
     return (
     
-     <>
+     <Div>
+        <Section>
+            <h3>{name}</h3>
+            <span>{course}</span>
+            <p>{ingredients}</p>
+            <p>{technique}</p>
+        </Section>
 
-<div>{name}</div>  
-        <Card>
-            {/* <Image src={image} /> */}
-            <Card.Content>
-                <Card.Header>{name}</Card.Header>
-                <Card.Meta>{course}</Card.Meta>
-                <Card.Description>{technique}</Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-                {/* <Link to={'#'}>
-                    <Icon name='user' />
-                     Friends
-                </Link> */}
-            </Card.Content>
-        </Card>
-
-     </>
+     </Div>
 
     )
 }
 
 
 export default Display;
+
+//====Styled Components========/
+
+const Div = styled.div`
+    // display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+`
+
+const Section = styled.section`
+    background: gray;
+    width: 44%;
+    border: 3px solid #61afb
+
+`
+const P = styled.p`
+    display: flex;
+    flex-direction: column
+`
