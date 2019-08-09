@@ -52,10 +52,14 @@ const FormikRegristrationForm = withFormik({
         axios.post('http://localhost:5000/api/register', values)
 
         .then(response => {
-            console.log('Axios Response:', response)
+            console.log('Axios.post Response:', response)
             resetForm();
         })
 
+        .catch(error => {
+            console.log('Axios.post Error:', error)
+        });
+        //Add error cannot have the same username or passwords as anyone else who registers
         
     },
 
