@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 
 import RegristrationForm from './components/RegristrationForm';
+import Display from './components/Display'
 
 
 class App extends React.Component {
@@ -11,25 +12,21 @@ class App extends React.Component {
     super();
 
     this.state = {
-      // arrays =[]
+      items: [],
     }
 
   };
 
-  componentDidMount() {
-    this.getArrays();
-  };
+  getItems = () => {
 
-  getArrays = () => {
-
-    axios.get('http://localhost:5000/api/restricted/data')
+     axios.get('http://localhost:5000/api/restricted/data')
 
       .then(response => {
-        console.log('Axios.get Response', response.data)
-        const item = response.data
-        this.setState({
+         console.log('Axios.get Response', response.data)
+         this.setState({
+           items:response.data
 
-        })
+         })
 
       })
 
@@ -39,15 +36,29 @@ class App extends React.Component {
 
   };
 
+  componentDidMount() {
+    this.getItems();
+  };
+
   render() {
+    console.log('Render:', this.state.items)
     return (
 
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <RegristrationForm />
-
         </header>
+
+        <div> 
+          {this.state.items.map(e => <Display 
+            course = {e.course}
+            ingredients = {e.ingredients}
+            name = {e.name}
+            technique = {e.ingredients}
+            />
+          )}
+        </div>
       </div>
 
     );
