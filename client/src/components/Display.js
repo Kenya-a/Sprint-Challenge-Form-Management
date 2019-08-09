@@ -9,7 +9,7 @@ const Display = ({ name, ingredients, technique, course }) => {
     
      <>
 
-<div>{name}</div>
+<div>{name}</div>  
         <Card>
             {/* <Image src={image} /> */}
             <Card.Content>
