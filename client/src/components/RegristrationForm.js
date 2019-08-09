@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withFormik,Form, Field} from 'formik';
 
  import * as Yup from 'yup';
-//  import axios from 'axios';
+ import axios from 'axios';
 
 
 function RegristrationForm({values, errors, touched}){
@@ -45,9 +45,18 @@ const FormikRegristrationForm = withFormik({
         };
     },
 
-    handleSubmit(values){
+    handleSubmit(values, { resetForm }){
+
         console.log('Handle Submit Values:',values)
 
+        axios.post('http://localhost:5000/api/register', values)
+
+        .then(response => {
+            console.log('Axios Response:', response)
+            resetForm();
+        })
+
+        
     },
 
     //========Validation Schema============
